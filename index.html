@@ -8,87 +8,157 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.7;
+            background-color: #fff;
             color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 750px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: left;
+        }
+
+        /* Logo styling */
+        .logo {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin: 10px auto 0 auto;
         }
 
         h1 {
             text-align: center;
-            color: #d36b8a;
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            display: block;
-            margin: 0 auto 20px auto;
-            max-width: 180px;
+            color: #d77494;
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 30px;
         }
 
         label {
             display: block;
-            margin: 12px 0;
-            font-size: 19px;
+            margin-bottom: 18px;
+            font-size: 18px;
+            cursor: pointer;
+            line-height: 1.4;
         }
 
         input[type="checkbox"] {
             transform: scale(1.3);
-            margin-right: 12px;
-            accent-color: #d36b8a;
+            margin-right: 10px;
+            accent-color: #d77494;
         }
 
-        .button-container {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        button {
-            background-color: #d36b8a;
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color: #d77494;
             color: white;
-            padding: 16px 40px;
+            text-align: center;
             font-size: 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #c05f7c;
-        }
-
-        #result {
-            margin-top: 30px;
-            font-size: 22px;
             font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-top: 35px;
         }
 
-        .highlight {
-            color: #d36b8a;
+        .btn:hover {
+            background-color: #c66383;
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            background-color: #f8e7ed;
+            color: #444;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- OPTIONAL LOGO -->
-    <!-- Replace "logo.jpg" with your logo file name -->
-    <img src="logo.jpg" alt="Logo" class="logo">
+<div class="container">
+
+    <!-- LOGO -->
+    <img src="logo.jpg" alt="PresSure logo" class="logo">
 
     <h1>PresSure Fit Finder</h1>
 
-    <p>Select all that apply.</p>
+    <p><strong>Select all that apply.</strong></p>
 
-    <label><input type="checkbox" class="risk-checkbox"> I have been told by a healthcare provider that I may be at increased risk for breast cancer due to my genetics, family history, or breast density.</label>
+    <!-- USER FACTORS -->
+    <label><input type="checkbox" class="factor"> I have been told by a healthcare provider that I may be at increased risk for breast cancer due to my genetics, family history, or breast density.</label>
 
-    <label><input type="checkbox" class="risk-checkbox"> I have previously been treated for breast cancer.</label>
+    <label><input type="checkbox" class="factor"> I have previously been treated for breast cancer.</label>
 
-    <label><input type="checkbox" class="risk-checkbox"> I have received radiation treatment to my chest area.</label>
+    <label><input type="checkbox" class="factor"> I have received radiation treatment to my chest area.</label>
 
-    <label><input type="checkbox" class="risk-checkbox"> A close blood relative was diagnosed with breast cancer before age 50.</label>
+    <!-- FAMILY FACTORS -->
+    <label><input type="checkbox" class="factor"> A close blood relative was diagnosed with breast cancer before age 50.</label>
 
-    <label><input type="checkbox" class="risk-checkbox"> A close relative has had male breast cancer at any age.</label>
+    <label><input type="checkbox" class="factor"> A close relative has had male breast cancer at any age.</label>
 
-    <label><input type="checkbox" class="risk-checkbox"> Two or more close relatives on the same side of my family have been diagnosed with breast or prostate cancer.</label>
+    <label><input type="checkbox" class="factor"> Two or more close relatives on the same side of my family have been diagnosed with breast or prostate cancer.</label>
 
-    <label><input ty
+    <label><input type="checkbox" class="factor"> Someone in my family carries a known breast-cancer–related genetic mutation (BRCA1, BRCA2, PALB2, TP53, etc.).</label>
+
+    <!-- NONE OPTION -->
+    <label><strong><input type="checkbox" id="none"> None of the above apply to me.</strong></label>
+
+    <button class="btn" onclick="showResults()">See My Results</button>
+
+    <div id="result" class="result-box" style="display:none;"></div>
+
+</div>
+
+
+<script>
+    const noneBox = document.getElementById("none");
+    const factors = document.querySelectorAll(".factor");
+
+    // When "None of the above" is checked
+    noneBox.addEventListener("change", () => {
+        if (noneBox.checked) {
+            factors.forEach(f => f.checked = false);
+        }
+    });
+
+    // When any other box is checked
+    factors.forEach(box => {
+        box.addEventListener("change", () => {
+            if (box.checked) {
+                noneBox.checked = false;
+            }
+        });
+    });
+
+    function showResults() {
+        const anyChecked = Array.from(factors).some(f => f.checked);
+        const noneChecked = noneBox.checked;
+
+        const result = document.getElementById("result");
+        result.style.display = "block";
+
+        if (anyChecked) {
+            result.innerHTML = "<strong>Based on your answers, PresSure may be a strong fit for you.</strong>";
+        } else if (noneChecked) {
+            result.innerHTML =
+                `<strong>Your answers don’t match the factors we use when recommending PresSure, 
+                but staying in tune with your body is always valuable. You may find it helpful 
+                to check general breast wellness guidelines or chat with a healthcare provider about what works best for you.</strong>`;
+        } else {
+            result.innerHTML = "<strong>Please select an option above.</strong>";
+        }
+    }
+</script>
+
+</body>
+</html>
