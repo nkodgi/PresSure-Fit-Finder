@@ -1,180 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PresSure Fit Finder</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #ffffff;
-            color: #444;
-            text-align: center;
-        }
-        header {
-            padding: 40px 20px 10px;
-        }
-        .logo {
-            width: 120px;
-            height: auto;
-            opacity: 0.9;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-top: 10px;
-            color: #e89abf;
-            font-weight: 600;
-        }
-        .subtext {
-            font-size: 1.1rem;
-            color: #777;
-            margin-bottom: 30px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fcebf3;
-            padding: 30px;
-            border-radius: 20px;
-        }
-        .question {
-            text-align: left;
-            margin: 20px 0;
-            font-size: 1rem;
-        }
-        button {
-            background-color: #e89abf;
-            border: none;
-            padding: 14px 30px;
-            color: white;
-            font-size: 1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-top: 25px;
-        }
-        button:hover {
-            background-color: #d786ad;
-        }
-        #resultBox {
-            display: none;
-            margin-top: 25px;
-            padding: 20px;
-            background: #ffe6f2;
-            border-radius: 15px;
-            font-size: 1.1rem;
-        }
-        .qr-section {
-            margin-top: 50px;
-            padding: 20px;
-        }
-        .qr-section h3 {
-            color: #e89abf;
-            margin-bottom: 10px;
-        }
-        footer {
-            margin-top: 60px;
-            padding: 20px;
-            font-size: 0.85rem;
-            color: #999;
-        }
-    </style>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PresSure Fit Finder</title>
 
-<body>
-    <header>
-        <img src="logo.jpg" alt="PresSure Logo" class="logo" />
-        <h1>PresSure Fit Finder</h1>
-        <p class="subtext">A quick, gentle way to see if PresSure may support your breast wellness journey.</p>
-    </header>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #FDEBF0;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
 
-    <div class="container">
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-        <p style="text-align:left; font-weight:600; margin-bottom:15px;">
-            Please check any that apply to you.
-        </p>
+    h1 {
+        text-align: center;
+        color: #D63384;
+        margin-bottom: 20px;
+        font-size: 32px;
+    }
 
-        <form id="quizForm">
-            <div class="question"><input type="checkbox" class="fit" name="q2"> I have previously been treated for breast cancer.</div>
-            <div class="question"><input type="checkbox" class="fit" name="q1"> I have received radiation treatment to my chest area.</div>
-            <div class="question"><input type="checkbox" class="fit" name="q3"> I have been told by a healthcare provider that I may be at higher risk for breast cancer due to my genetics, family history, or breast density.</div>
-            <div class="question"><input type="checkbox" class="fit" name="q4"> I have a close blood relative who was diagnosed with breast cancer before age 50.</div>
-            <div class="question"><input type="checkbox" class="fit" name="q5"> I have a close relative who has had male breast cancer at any age.</div>
-            <div class="question"><input type="checkbox" class="fit" name="q6"> I have two or more close relatives on the same side of my family who have been diagnosed with breast or prostate cancer.</div>
-            <div class="question"><input type="checkbox" class="fit" name="q7"> Someone in my family carries a breast-cancer–related genetic mutation (BRCA1, BRCA2, PALB2, TP53).</div>
+    h2 {
+        margin-top: 30px;
+        color: #D63384;
+    }
 
-            <div class="question" style="font-weight: bold; margin-top: 25px;">
-                <input type="checkbox" id="noneOption"> None of the above apply to me.
-            </div>
+    /* FIXED CHECKBOX ALIGNMENT */
+    .question {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        font-size: 20px;
+    }
 
-            <button type="button" onclick="checkAnswers()">See My Result</button>
-        </form>
+    .question input[type="checkbox"] {
+        margin-top: 4px;
+        transform: scale(1.2);
+    }
 
-        <div id="resultBox"></div>
-    </div>
+    #noneOptionLabel {
+        font-weight: bold;
+        color: #b3003b;
+    }
 
-    <div class="qr-section">
-        <h3>Share the PresSure Fit Finder</h3>
-        <p>Scan or save this QR code to share with others:</p>
-        <img src="qr-code.png" width="160" />
-    </div>
+    #resultBox {
+        margin-top: 35px;
+        padding: 25px;
+        border-radius: 10px;
+        font-size: 20px;
+        display: none;
+    }
 
-    <!-- SOCIAL & CONTACT SECTION -->
-    <div style="margin-top:40px; font-size:0.95rem; color:#666;">
-        <p>If you'd like updates about PresSure, follow us on X (Twitter):
-            <a href="https://twitter.com/PresSure_Health" target="_blank" style="color:#e89abf; font-weight:600;">
-                @PresSure_Health
-            </a>
-        </p>
-        <p>For questions or collaborations, email us at:
-            <a href="mailto:pressurehealth.team@gmail.com" style="color:#e89abf; font-weight:600;">
-                pressurehealth.team@gmail.com
-            </a>
-        </p>
-    </div>
+    .fit {
+        background: #D4EDDA;
+        border-left: 6px solid #28A745;
+    }
 
-    <footer>
-        This tool is for general wellness purposes only and not for diagnosis or medical evaluation.
-    </footer>
+    .not-fit {
+        background: #F8D7DA;
+        border-left: 6px solid #C82333;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 16px;
+        color: #666;
+    }
+
+    a {
+        color: #D63384;
+        text-decoration: underline;
+    }
+</style>
 
 <script>
-// MUTUAL EXCLUSION LOGIC
-const fitBoxes = document.querySelectorAll(".fit");
-const noneBox = document.getElementById("noneOption");
+function toggleNone(checkbox) {
+    const noneBox = document.getElementById("noneOption");
+    const allOthers = document.querySelectorAll(".fit");
 
-noneBox.addEventListener("change", () => {
-    if (noneBox.checked) {
-        fitBoxes.forEach(cb => cb.checked = false);
+    if (checkbox.id === "noneOption" && checkbox.checked) {
+        allOthers.forEach(cb => cb.checked = false);
+    } else if (checkbox.classList.contains("fit") && checkbox.checked) {
+        noneBox.checked = false;
     }
-});
-
-fitBoxes.forEach(cb => {
-    cb.addEventListener("change", () => {
-        if (cb.checked) {
-            noneBox.checked = false;
-        }
-    });
-});
-
-function checkAnswers() {
-    const resultBox = document.getElementById("resultBox");
-    const anyYes = Array.from(fitBoxes).some(cb => cb.checked);
-    const noneSelected = noneBox.checked;
-
-    let message = "";
-
-    if (anyYes) {
-        message = "Based on your answers, PresSure may be a strong fit for you.";
-    } else if (noneSelected) {
-        message = `Your answers don’t match the factors we use when recommending PresSure, but staying in tune with your body is always valuable. You may find it helpful to review evidence-based screening recommendations, such as the <a href='https://www.nccn.org/patients/guidelines/content/PDF/genetics-patient.pdf' target='_blank' style='color:#d86b8f; font-weight:600;'>NCCN Genetics & Breast Screening Guidelines</a>, and speak with your healthcare provider about what’s right for you.`;
-    } else {
-        message = "Please select an option above.";
-    }
-
-    resultBox.innerHTML = message;
-    resultBox.style.display = "block";
 }
+
+function evaluateFit() {
+    const checkboxes = document.querySelectorAll(".fit");
+    const noneBox = document.getElementById("noneOption");
+    let isAnySelected = false;
+
+    checkboxes.forEach(cb => { if (cb.checked) isAnySelected = true });
+
+    const resultBox = document.getElementById("resultBox");
+    resultBox.style.display = "block";
+
+    if (noneBox.checked) {
+        resultBox.className = "not-fit";
+        resultBox.innerHTML = `
+            <strong>You may not be a good fit for PresSure at this time.</strong><br><br>
+            Based on your responses, our tool may not be the best option for you right now.
+            We recommend reviewing the official NCCN Patient Guidelines for Genetics and
+            Breast Cancer Risk Assessment:<br><br>
+            <a href="https://www.nccn.org/patients/guidelines/content/PDF/genetics-patient.pdf" target="_blank">
+            NCCN Genetics & Breast Cancer Guidelines (PDF)</a><br><br>
+            You can also discuss these criteria with your healthcare provider for more personalized guidance.
+        `;
+    } else if (isAnySelected) {
+        resultBox.className = "fit";
+        resultBox.innerHTML = `
+            <strong>You may be a good fit for PresSure.</strong><br><br>
+            Based on the information you provided, you may benefit from at-home breast monitoring.
+            Please remember this tool is for wellness purposes only and is not a substitute for
+            clinical evaluation or diagnostic imaging.
+        `;
+    } else {
+        resultBox.className = "not-fit";
+        resultBox.innerHTML = "Please select an option before submitting.";
+    }
+}
+
 </script>
+</head>
+<body>
+
+<div class="container">
+
+<h1>PresSure Fit Finder</h1>
+
+<h2>Please check any that apply to you.</h2>
+
+<div class="question">
+    <input type="checkbox" class="fit" onclick="toggleNone(this)">
+    <span>I have previously been treated for breast cancer.</span>
+</div>
+
+<div class="question">
+    <input type="checkbox" class="fit" onclick="toggleNone(this)">
+    <span>I have received radiation treatment to my chest area.</span>
+</div>
+
+<div class="question">
+    <input type="checkbox" class="fit" onclick="toggleNone(this)">
+    <span>I have been told by a healthcare provider that I may be at higher risk for breast cancer due to my genetics, family history, or breast density.</span>
+</div>
+
+<div class="question">
+    <input type="checkbox" class="fit" onclick="toggleNone(this)">
+    <span>I have a close blood relative who was diagnosed with breast cancer before age 50.</span>
+</div>
+
+<div class="question">
+    <input type="checkbox" class="fit" onclick="toggleNone(this)">
+    <span>I have a close relative who has had male breast cancer at any age.</span>
+</div>
+
+<div class="question">
+    <input type="checkbox" class="fit" onclick="toggleNone(this)">
+    <span>I have two or more close relatives on the same side of my family who have been diagnosed with breast or prostate cancer.</span>
+</div>
+
+<div class="question">
+    <input type="checkbox" class="fit" onclick="toggleNone(this)">
+    <span>Someone in my family carries a breast-cancer–related genetic mutation (BRCA1, BRCA2, PALB2, TP53).</span>
+</div>
+
+<div class="question">
+    <input type="checkbox" id="noneOption" onclick="toggleNone(this)">
+    <span id="noneOptionLabel">None of the above apply to me.</span>
+</div>
+
+<button onclick="evaluateFit()" 
+style="margin-top: 25px; padding: 12px 25px; font-size: 18px; background-color:#D63384; color:white; border:none; border-radius:8px; cursor:pointer;">
+Submit
+</button>
+
+<div id="resultBox"></div>
+
+<!-- SHARE PAGE -->
+<h2 style="margin-top: 50px; text-align:center;">Share the PresSure Fit Finder</h2>
+<p style="text-align:center;">Scan or save this QR code to share with others:</p>
+
+<div style="text-align:center;">
+    <img src="qr-code.png" alt="QR Code" style="width:200px;">
+</div>
+
+</div>
+
+<div class="footer">
+    Follow us on X (Twitter): <a href="https://x.com/PresSure_Health" target="_blank">@PresSure_Health</a><br>
+    Contact us: <a href="mailto:pressurehealth.team@gmail.com">pressurehealth.team@gmail.com</a><br><br>
+    This tool is for general wellness purposes only and not for diagnosis or medical evaluation.
+</div>
 
 </body>
 </html>
