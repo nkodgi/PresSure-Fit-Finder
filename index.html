@@ -42,13 +42,6 @@
             text-align: left;
             margin: 20px 0;
             font-size: 1rem;
-            line-height: 1.4;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        .question input {
-            margin-top: 4px;
         }
         button {
             background-color: #e89abf;
@@ -102,47 +95,16 @@
         </p>
 
         <form id="quizForm">
-
-            <!-- Q2 becomes Q1 -->
-            <div class="question">
-                <input type="checkbox" class="fit" name="q2">
-                <label>I have previously been treated for breast cancer.</label>
-            </div>
-
-            <!-- Q1 becomes Q2 -->
-            <div class="question">
-                <input type="checkbox" class="fit" name="q1">
-                <label>I have received radiation treatment to my chest area.</label>
-            </div>
-
-            <div class="question">
-                <input type="checkbox" class="fit" name="q3">
-                <label>I have been told by a healthcare provider that I may be at higher risk for breast cancer due to my genetics, family history, or breast density.</label>
-            </div>
-
-            <div class="question">
-                <input type="checkbox" class="fit" name="q4">
-                <label>I have a close blood relative who was diagnosed with breast cancer before age 50.</label>
-            </div>
-
-            <div class="question">
-                <input type="checkbox" class="fit" name="q5">
-                <label>I have a close relative who has had male breast cancer at any age.</label>
-            </div>
-
-            <div class="question">
-                <input type="checkbox" class="fit" name="q6">
-                <label>I have two or more close relatives on the same side of my family who have been diagnosed with breast or prostate cancer.</label>
-            </div>
-
-            <div class="question">
-                <input type="checkbox" class="fit" name="q7">
-                <label>Someone in my family carries a breast-cancer–related genetic mutation (BRCA1, BRCA2, PALB2, TP53).</label>
-            </div>
+            <div class="question"><input type="checkbox" class="fit" name="q2"> I have previously been treated for breast cancer.</div>
+            <div class="question"><input type="checkbox" class="fit" name="q1"> I have received radiation treatment to my chest area.</div>
+            <div class="question"><input type="checkbox" class="fit" name="q3"> I have been told by a healthcare provider that I may be at higher risk for breast cancer due to my genetics, family history, or breast density.</div>
+            <div class="question"><input type="checkbox" class="fit" name="q4"> I have a close blood relative who was diagnosed with breast cancer before age 50.</div>
+            <div class="question"><input type="checkbox" class="fit" name="q5"> I have a close relative who has had male breast cancer at any age.</div>
+            <div class="question"><input type="checkbox" class="fit" name="q6"> I have two or more close relatives on the same side of my family who have been diagnosed with breast or prostate cancer.</div>
+            <div class="question"><input type="checkbox" class="fit" name="q7"> Someone in my family carries a breast-cancer–related genetic mutation (BRCA1, BRCA2, PALB2, TP53).</div>
 
             <div class="question" style="font-weight: bold; margin-top: 25px;">
-                <input type="checkbox" id="noneOption">
-                <label>None of the above apply to me.</label>
+                <input type="checkbox" id="noneOption"> None of the above apply to me.
             </div>
 
             <button type="button" onclick="checkAnswers()">See My Result</button>
@@ -155,6 +117,20 @@
         <h3>Share the PresSure Fit Finder</h3>
         <p>Scan or save this QR code to share with others:</p>
         <img src="qr-code.png" width="160" />
+    </div>
+
+    <!-- SOCIAL & CONTACT SECTION -->
+    <div style="margin-top:40px; font-size:0.95rem; color:#666;">
+        <p>If you'd like updates about PresSure, follow us on X (Twitter):
+            <a href="https://twitter.com/PresSure_Health" target="_blank" style="color:#e89abf; font-weight:600;">
+                @PresSure_Health
+            </a>
+        </p>
+        <p>For questions or collaborations, email us at:
+            <a href="mailto:pressurehealth.team@gmail.com" style="color:#e89abf; font-weight:600;">
+                pressurehealth.team@gmail.com
+            </a>
+        </p>
     </div>
 
     <footer>
@@ -190,7 +166,7 @@ function checkAnswers() {
     if (anyYes) {
         message = "Based on your answers, PresSure may be a strong fit for you.";
     } else if (noneSelected) {
-        message = "Your answers don’t match the factors we use when recommending PresSure, but staying in tune with your body is always valuable. You may find it helpful to check general breast wellness guidelines or chat with your healthcare provider.";
+        message = `Your answers don’t match the factors we use when recommending PresSure, but staying in tune with your body is always valuable. You may find it helpful to review evidence-based screening recommendations, such as the <a href='https://www.nccn.org/patients/guidelines/content/PDF/genetics-patient.pdf' target='_blank' style='color:#d86b8f; font-weight:600;'>NCCN Genetics & Breast Screening Guidelines</a>, and speak with your healthcare provider about what’s right for you.`;
     } else {
         message = "Please select an option above.";
     }
