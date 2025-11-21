@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Team | PresSure</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team</title>
     <style>
         body {
             margin: 0;
@@ -17,7 +17,6 @@
         }
         .logo {
             width: 120px;
-            height: auto;
             opacity: 0.9;
         }
         h1 {
@@ -26,51 +25,41 @@
             color: #e89abf;
             font-weight: 600;
         }
-        nav a {
-            color: #d86b8f;
-            text-decoration: none;
-            font-weight: 600;
-            margin: 0 12px;
-            font-size: 1rem;
-        }
         nav {
-            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+        nav a {
+            margin: 0 15px;
+            font-size: 0.95rem;
+            text-decoration: none;
+            color: #d86b8f;
         }
         .container {
-            max-width: 750px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 30px auto;
             background: #fcebf3;
             padding: 30px;
             border-radius: 20px;
-        }
-        .team-member {
-            margin-bottom: 40px;
             text-align: left;
         }
-        .team-member img {
+        .member {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        .member img {
             width: 140px;
             height: 140px;
             object-fit: cover;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            border: 3px solid #fff;
+            border-radius: 15px;
         }
-        .team-member h2 {
+        .member h3 {
             color: #e89abf;
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        .team-member p {
-            font-size: 1rem;
-            line-height: 1.5;
-            margin: 5px 0 15px;
-        }
-        .team-photo {
-            margin-top: 40px;
+            margin: 0;
         }
         footer {
-            margin-top: 60px;
+            margin-top: 50px;
             padding: 20px;
             font-size: 0.85rem;
             color: #999;
@@ -78,26 +67,84 @@
         a {
             color: #d86b8f;
         }
+        .team-photo {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .team-photo img {
+            width: 70%;
+            border-radius: 20px;
+        }
     </style>
 </head>
-
 <body>
 
-    <header>
-        <img src="logo.jpg" alt="PresSure Logo" class="logo" />
-        <h1>Our Team</h1>
-    </header>
-
-    <!-- NAVIGATION BAR -->
+<header>
+    <img src="logo.jpg" alt="PresSure Logo" class="logo">
+    <h1>Our Team</h1>
     <nav>
         <a href="index.html">Fit Finder</a>
         <a href="about.html">About PresSure</a>
-        <a href="team.html">Our Team</a>
+        <a href="team.html"><strong>Our Team</strong></a>
     </nav>
+</header>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Natasha -->
-        <div class="team-member">
-            <img src="natasha.jpg" alt="Natasha" />
-            <h2>Natasha</h2>
+    <!-- NATASHA -->
+    <div class="member">
+        <img src="natasha.jpg" alt="Natasha Kodgi">
+        <div>
+            <h3>Natasha Kodgi</h3>
+            <p>
+                Natasha is a Biomedical Engineer specializing in women’s health innovation, bioinformatics, 
+                and data-driven product design. She brings experience from immunotherapy and biopharmaceuticals, 
+                where she worked on optimizing the clinical trial process. She is passionate about building 
+                accessible tools that improve early detection, clarity, and equity in women’s health.
+            </p>
+            <p><strong>Contact:</strong> <a href="mailto:nkodgi@gmail.com">nkodgi@gmail.com</a></p>
+        </div>
+    </div>
+
+    <!-- RUTUJA -->
+    <div class="member">
+        <img src="rutuja.JPG" alt="Rutuja">
+        <div>
+            <h3>Rutuja</h3>
+            <p>
+                Rutuja is an engineer with expertise in product development, user-centered design, 
+                and biomedical innovation. She focuses on translating clinical needs into practical 
+                and manufacturable solutions within women's health.
+            </p>
+            <p><strong>Contact:</strong> (add email here)</p>
+        </div>
+    </div>
+
+    <!-- JAITI -->
+    <div class="member">
+        <img src="jaiti.jpg" alt="Jaiti">
+        <div>
+            <h3>Jaiti</h3>
+            <p>
+                Jaiti specializes in human-centered engineering and health technology research. She 
+                brings experience in accessibility-focused design and contributes to building intuitive, 
+                empowering devices for women’s wellness.
+            </p>
+            <p><strong>Contact:</strong> (add email here)</p>
+        </div>
+    </div>
+
+    <!-- TEAM PHOTO -->
+    <div class="team-photo">
+        <img src="team.jpg" alt="Team Photo">
+    </div>
+
+</div>
+
+<footer>
+    Follow us on X: <strong>@PresSure_Health</strong><br>
+    Contact: <a href="mailto:pressurehealth.team@gmail.com">pressurehealth.team@gmail.com</a>
+</footer>
+
+</body>
+</html>
