@@ -49,8 +49,8 @@
             align-items: flex-start;
         }
         .member img {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             object-fit: cover;
             border-radius: 15px;
         }
@@ -58,22 +58,34 @@
             color: #e89abf;
             margin: 0;
         }
+        .team-photo-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .team-photo-container img {
+            width: 70%;
+            border-radius: 20px;
+        }
+        .team-caption {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #d86b8f;
+            font-weight: 600;
+        }
         footer {
             margin-top: 50px;
             padding: 20px;
             font-size: 0.85rem;
             color: #999;
         }
+        .footer-header {
+            color: #e89abf;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
         a {
             color: #d86b8f;
-        }
-        .team-photo {
-            margin-top: 40px;
-            text-align: center;
-        }
-        .team-photo img {
-            width: 70%;
-            border-radius: 20px;
         }
     </style>
 </head>
@@ -100,7 +112,7 @@
                 Natasha is a Biomedical Engineer specializing in women’s health innovation, bioinformatics, 
                 and data-driven product design. She brings experience from immunotherapy and biopharmaceuticals, 
                 where she worked on optimizing the clinical trial process. She is passionate about building 
-                accessible tools that improve early detection, clarity, and equity in women’s health.
+                accessible tools that improve early detection in breast cancer and equity in women’s health.
             </p>
             <p><strong>Contact:</strong> <a href="mailto:nkodgi@gmail.com">nkodgi@gmail.com</a></p>
         </div>
@@ -110,7 +122,7 @@
     <div class="member">
         <img src="rutuja.JPG" alt="Rutuja">
         <div>
-            <h3>Rutuja</h3>
+            <h3>Rutuja Shendage</h3>
             <p>
                 Rutuja is an engineer with expertise in product development, user-centered design, 
                 and biomedical innovation. She focuses on translating clinical needs into practical 
@@ -124,7 +136,7 @@
     <div class="member">
         <img src="jaiti.jpg" alt="Jaiti">
         <div>
-            <h3>Jaiti</h3>
+            <h3>Jaiti Swami</h3>
             <p>
                 Jaiti specializes in human-centered engineering and health technology research. She 
                 brings experience in accessibility-focused design and contributes to building intuitive, 
@@ -134,16 +146,18 @@
         </div>
     </div>
 
-    <!-- TEAM PHOTO -->
-    <div class="team-photo">
+    <!-- TEAM PHOTO WITH CAPTION -->
+    <div class="team-photo-container">
         <img src="team.jpg" alt="Team Photo">
+        <p class="team-caption">Our Team at Create-X Summit — We won 3rd place!</p>
     </div>
 
 </div>
 
 <footer>
+    <p class="footer-header">Contact Our Team</p>
     Follow us on X: <strong>@PresSure_Health</strong><br>
-    Contact: <a href="mailto:pressurehealth.team@gmail.com">pressurehealth.team@gmail.com</a>
+    Email: <a href="mailto:pressurehealth.team@gmail.com">pressurehealth.team@gmail.com</a>
 </footer>
 
 </body>
